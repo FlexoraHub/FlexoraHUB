@@ -8,7 +8,6 @@
         :root {
             --bg-page: #edf2f7;
             --card-bg: #ffffff;
-            --inner-card: #f8fafc;
             --border-color: #d8e1eb;
             --primary: #0340ab;
             --text-dark: #1e293b;
@@ -36,7 +35,7 @@
         .main-box {
             background: var(--card-bg);
             width: 100%;
-            max-width: 960px;
+            max-width: 1050px;
             border-radius: 14px;
             border: 1px solid var(--border-color);
             box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
@@ -61,61 +60,93 @@
 
         /* Services Body */
         .services-section {
-            padding: 2.2rem 2rem 2.5rem;
-            text-align: center;
+            padding: 2.5rem 2rem 2.8rem;
+            background-color: #f8fafc;
         }
 
         .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
+            text-align: center;
+            font-size: 1.85rem;
+            font-weight: 800;
             color: var(--primary);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.4rem;
         }
 
         .section-subtitle {
-            font-size: 0.92rem;
+            text-align: center;
+            font-size: 0.95rem;
             color: var(--text-muted);
-            margin-bottom: 1.8rem;
+            margin-bottom: 2.2rem;
         }
 
         /* 4 Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.1rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
         }
 
         .service-card {
-            background: var(--inner-card);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 1.5rem 1.2rem;
-            text-align: center;
-            transition: border-color 0.2s, transform 0.2s;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.8rem 1.4rem;
+            border-top: 4px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(3, 64, 171, 0.06);
+            text-align: left;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .service-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 22px rgba(3, 64, 171, 0.1);
         }
 
         .service-card h3 {
             color: var(--primary);
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 0.7rem;
-            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
         }
 
-        .service-card p {
+        .service-card ul {
+            list-style: none;
             color: var(--text-muted);
-            font-size: 0.88rem;
-            line-height: 1.6;
+            font-size: 0.92rem;
+            line-height: 1.55;
         }
 
-        @media (max-width: 600px) {
+        .service-card ul li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.35rem;
+            position: relative;
+        }
+
+        .service-card ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-card ul li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Responsive adjustments for Tablet & Mobile */
+        @media (max-width: 900px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
             .banner-header { padding: 1rem; }
-            .services-section { padding: 1.6rem 1.2rem; }
+            .services-section { padding: 1.8rem 1.2rem; }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -123,7 +154,7 @@
 
     <div class="main-box">
         
-        <!-- Header Banner (Exact filename: Banner.png) -->
+        <!-- Header Banner -->
         <div class="banner-header">
             <img src="Banner.png" alt="RRS FlexoraHub">
         </div>
@@ -131,28 +162,48 @@
         <!-- Services Section -->
         <div class="services-section">
             <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">Complete Print, Design, Tech & Digital Solutions</p>
+            <p class="section-subtitle">Complete creative and technical solutions under one roof</p>
 
             <div class="services-grid">
                 
                 <div class="service-card">
-                    <h3>PRINT</h3>
-                    <p>Xerox, Printout, Spiral Binding, Photo Prints, Custom Paper Covers & Stickers.</p>
+                    <h3>Print</h3>
+                    <ul>
+                        <li>Document & Bulk Printing</li>
+                        <li>4x6 Photo Prints & Lamination</li>
+                        <li>Custom Gusseted Paper Covers</li>
+                        <li>Brand & Thank-You Stickers</li>
+                    </ul>
                 </div>
 
                 <div class="service-card">
-                    <h3>DESIGN</h3>
-                    <p>Logos, Branding Icons, Flyers, Posters, Layouts & Promotional Intro Videos.</p>
+                    <h3>Design</h3>
+                    <ul>
+                        <li>Logos & Branding Icons</li>
+                        <li>Brochures, Flyers & Posters</li>
+                        <li>Promotional Intro Videos</li>
+                        <li>Print-Ready Custom Layouts</li>
+                    </ul>
                 </div>
 
                 <div class="service-card">
-                    <h3>TECH</h3>
-                    <p>Custom Web Apps, Smart Attendance Systems & Google Apps Script Tools.</p>
+                    <h3>Tech</h3>
+                    <ul>
+                        <li>Custom Web Applications</li>
+                        <li>Smart Attendance Systems</li>
+                        <li>Google Apps Script Automation</li>
+                        <li>Dashboard & Sheet Integrations</li>
+                    </ul>
                 </div>
 
                 <div class="service-card">
-                    <h3>SOLUTIONS</h3>
-                    <p>Digital Billing, Workflow Automation & Custom Project Support.</p>
+                    <h3>Solutions</h3>
+                    <ul>
+                        <li>Digital Billing & Invoicing</li>
+                        <li>Automated Push Notifications</li>
+                        <li>Academic & Event Tech Support</li>
+                        <li>Custom Workflow Setup</li>
+                    </ul>
                 </div>
 
             </div>
