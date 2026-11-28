@@ -6,12 +6,14 @@
     <title>RRS FlexoraHub | Print • Design • Tech • Solutions</title>
     <style>
         :root {
-            --primary: #0340ab;      /* Royal Blue */
-            --primary-dark: #022b75;
-            --accent: #e8f0fe;       /* Light Blue */
+            --bg-page: #edf2f7;       /* Soft cool grey-blue background */
+            --card-bg: #ffffff;       /* Pure white main box */
+            --inner-card: #f8fafc;    /* Subtle inner card tint */
+            --border-color: #d8e1eb;  /* Clean thin outline */
+            --primary: #0340ab;       /* Royal Blue */
+            --primary-hover: #022d7a;
             --text-dark: #1e293b;
-            --text-light: #64748b;
-            --white: #ffffff;
+            --text-muted: #526071;
         }
 
         * {
@@ -19,331 +21,256 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
+            background-color: var(--bg-page);
             color: var(--text-dark);
-            background-color: #f8fafc;
-            line-height: 1.6;
-        }
-
-        /* Navbar */
-        header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 1rem 1.5rem;
+            min-height: 100vh;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-decoration: none;
-            letter-spacing: 0.5px;
+        /* Main Centered White Container with Small Outline */
+        .main-container {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 960px;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+            overflow: hidden;
         }
 
-        .logo span {
-            color: #0ea5e9;
-        }
-
-        nav a {
-            margin-left: 1.5rem;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #0284c7 100%);
-            color: var(--white);
-            padding: 5rem 1.5rem;
+        /* Top Banner Section */
+        .banner-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
             text-align: center;
+            background: #ffffff;
         }
 
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.8rem;
-            font-weight: 800;
+        .banner-header img {
+            max-width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: contain;
         }
 
-        .tagline {
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.15);
-            display: inline-block;
-            padding: 0.4rem 1.2rem;
-            border-radius: 50px;
-            margin-bottom: 1.5rem;
+        /* Fallback Header (Shows if banner.png is not uploaded yet) */
+        .fallback-brand {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
         }
 
-        .hero p {
-            max-width: 650px;
-            margin: 0 auto 2rem;
-            font-size: 1.1rem;
-            opacity: 0.92;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--white);
-            color: var(--primary);
-            padding: 0.85rem 2rem;
-            border-radius: 8px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Sections */
-        section {
-            max-width: 1100px;
-            margin: auto;
-            padding: 4.5rem 1.5rem;
-        }
-
-        .section-title {
-            text-align: center;
+        .fallback-brand h1 {
             font-size: 2rem;
+            font-weight: 800;
             color: var(--primary);
-            margin-bottom: 0.5rem;
         }
 
-        .section-subtitle {
+        .fallback-brand h1 span {
+            color: #f97316;
+        }
+
+        .fallback-tag {
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            padding: 0.3rem 1.2rem;
+            border-radius: 4px;
+        }
+
+        .fallback-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        /* Main Content Area */
+        .content-body {
+            padding: 2.2rem 2rem 2.5rem;
             text-align: center;
-            color: var(--text-light);
-            margin-bottom: 3rem;
         }
 
-        /* Services Grid */
-        .grid {
+        .section-heading {
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .section-sub {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        /* Service Cards Grid */
+        .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 2rem 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(3, 64, 171, 0.06);
-            border-top: 4px solid var(--primary);
-            transition: transform 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-            font-size: 1.3rem;
-        }
-
-        .card ul {
-            list-style: none;
-            color: var(--text-light);
-        }
-
-        .card ul li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.2rem;
-            position: relative;
-        }
-
-        .card ul li::before {
-            content: "✓";
-            color: var(--primary);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        /* About / Highlight Box */
-        .highlight-box {
-            background: var(--accent);
-            border-radius: 16px;
-            padding: 3rem 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.25rem;
             text-align: center;
         }
 
-        .highlight-box h2 {
+        .service-card {
+            background: var(--inner-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.6rem 1.3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 6px 18px rgba(3, 64, 171, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .service-card h3 {
             color: var(--primary);
-            margin-bottom: 1rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.65rem;
         }
 
-        .highlight-box p {
-            max-width: 750px;
-            margin: auto;
-            color: var(--text-dark);
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.55;
+            margin-bottom: 1.4rem;
         }
 
-        /* Contact Section */
-        .contact-box {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            max-width: 650px;
-            margin: auto;
+        .card-btn {
+            display: block;
+            width: 100%;
+            background: var(--primary);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 0.7rem 1rem;
+            border-radius: 7px;
+            transition: background 0.2s;
         }
 
-        .contact-links {
+        .card-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        /* Bottom Contact Strip */
+        .footer-strip {
+            border-top: 1px solid var(--border-color);
+            background: #f8fafc;
+            padding: 1rem 2rem;
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
-        .contact-btn {
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
+        .footer-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--primary);
             text-decoration: none;
             font-weight: 600;
-            color: var(--white);
-            background: var(--primary);
         }
 
-        .contact-btn.whatsapp {
-            background: #16a34a;
+        .footer-links a:hover {
+            text-decoration: underline;
         }
 
-        /* Footer */
-        footer {
-            background: var(--primary-dark);
-            color: var(--white);
-            text-align: center;
-            padding: 1.5rem;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2.1rem; }
-            nav { display: none; }
+        @media (max-width: 640px) {
+            .content-body { padding: 1.6rem 1.2rem; }
+            .footer-strip { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo">RRS <span>FlexoraHub</span></a>
-            <nav>
-                <a href="#services">Services</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
-    </header>
-
-    <div class="hero">
-        <div class="tagline">PRINT • DESIGN • TECH • SOLUTIONS</div>
-        <h1>RRS FlexoraHub</h1>
-        <p>Creative design, precision printing, and smart web automation solutions tailored for students, businesses, and institutions.</p>
-        <a href="#contact" class="btn">Connect With Us</a>
-    </div>
-
-    <section id="services">
-        <h2 class="section-title">Our Services</h2>
-        <p class="section-subtitle">Complete creative and technical solutions under one roof</p>
+    <div class="main-container">
         
-        <div class="grid">
-            <div class="card">
-                <h3>Print</h3>
-                <ul>
-                    <li>Document & Bulk Printing</li>
-                    <li>4x6 Photo Prints & Lamination</li>
-                    <li>Custom Gusseted Paper Covers</li>
-                    <li>Brand & Thank-You Stickers</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Design</h3>
-                <ul>
-                    <li>Logos & Branding Icons</li>
-                    <li>Brochures, Flyers & Posters</li>
-                    <li>Promotional Intro Videos</li>
-                    <li>Print-Ready Custom Layouts</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Tech</h3>
-                <ul>
-                    <li>Custom Web Applications</li>
-                    <li>Smart Attendance Systems</li>
-                    <li>Google Apps Script Automation</li>
-                    <li>Dashboard & Sheet Integrations</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Solutions</h3>
-                <ul>
-                    <li>Digital Billing & Invoicing</li>
-                    <li>Automated Push Notifications</li>
-                    <li>Academic & Event Tech Support</li>
-                    <li>Custom Workflow Setup</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="highlight-box">
-            <h2>Why RRS FlexoraHub?</h2>
-            <p>We bridge the gap between physical print craftsmanship and modern digital automation. Whether you need crisp print deliverables, eye-catching visual branding, or custom web tools to streamline daily operations, we deliver reliable results with attention to every detail.</p>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">Have a project, print order, or custom tool in mind? Reach out directly.</p>
-        
-        <div class="contact-box">
-            <p><strong>Location:</strong> Tamil Nadu, India</p>
-            <p style="margin-top: 0.5rem; color: var(--text-light);">Available for custom orders, digital designs, and web automation projects.</p>
+        <!-- Top Banner Header -->
+        <div class="banner-header">
+            <!-- Upload your cropped banner image as 'banner.png' in the same GitHub folder -->
+            <img src="banner.png" alt="RRS FlexoraHub Banner" onerror="this.style.display='none'; document.getElementById('fallbackHeader').style.display='flex';">
             
-            <div class="contact-links">
-                <!-- Replace 91XXXXXXXXXX with your WhatsApp number -->
-                <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="contact-btn whatsapp">WhatsApp Us</a>
-                <!-- Replace with your actual email -->
-                <a href="mailto:contact@example.com" class="contact-btn">Send Email</a>
+            <div id="fallbackHeader" class="fallback-brand">
+                <h1>RRS Flexora<span>Hub</span></h1>
+                <div class="fallback-tag">PRINT &nbsp;|&nbsp; DESIGN &nbsp;|&nbsp; TECH &nbsp;|&nbsp; SOLUTIONS</div>
+                <div class="fallback-info">
+                    5/148, KovilPalayam, AvinashiPalayam, Dharapuram Road, Tiruppur - 638 660 &bull; +91 93424 51882
+                </div>
             </div>
         </div>
-    </section>
 
-    <footer>
-        <p>&copy; 2026 RRS FlexoraHub. All Rights Reserved.</p>
-    </footer>
+        <!-- Center Content -->
+        <div class="content-body">
+            <h2 class="section-heading">Explore Our Services</h2>
+            <p class="section-sub">Choose a service category below to connect or place an enquiry</p>
+
+            <div class="cards-grid">
+                
+                <!-- Card 1: Print -->
+                <div class="service-card">
+                    <div>
+                        <h3>Print & Packaging</h3>
+                        <p>High-quality Xerox, Printout, Spiral Binding, 4x6 Photo Prints, custom gusseted paper covers, and brand stickers.</p>
+                    </div>
+                    <a href="https://wa.me/919342451882?text=Hi%20RRS%20FlexoraHub,%20I%20would%20like%20to%20enquire%20about%20Printing%20services." target="_blank" class="card-btn">Enquire Print &rarr;</a>
+                </div>
+
+                <!-- Card 2: Design -->
+                <div class="service-card">
+                    <div>
+                        <h3>Creative Design</h3>
+                        <p>Custom logos, branding icons, flyers, posters, print layouts, and promotional intro videos for events & departments.</p>
+                    </div>
+                    <a href="https://wa.me/919342451882?text=Hi%20RRS%20FlexoraHub,%20I%20would%20like%20to%20enquire%20about%20Design%20services." target="_blank" class="card-btn">Enquire Design &rarr;</a>
+                </div>
+
+                <!-- Card 3: Tech & Solutions -->
+                <div class="service-card">
+                    <div>
+                        <h3>Tech & Automation</h3>
+                        <p>Custom web apps, smart attendance portals, billing systems, and Google Sheets / Apps Script workflow automation.</p>
+                    </div>
+                    <a href="https://wa.me/919342451882?text=Hi%20RRS%20FlexoraHub,%20I%20would%20like%20to%20enquire%20about%20Tech%20%26%20Web%20Solutions." target="_blank" class="card-btn">Enquire Tech &rarr;</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Clean Footer Strip -->
+        <div class="footer-strip">
+            <div>&copy; 2026 RRS FlexoraHub &bull; Tiruppur - 638 660</div>
+            <div class="footer-links">
+                <a href="tel:+919342451882">+91 93424 51882</a>
+                <span>|</span>
+                <a href="https://wa.me/919342451882" target="_blank">WhatsApp</a>
+                <span>|</span>
+                <a href="mailto:rrs.flexorahub@gmail.com">rrs.flexorahub@gmail.com</a>
+            </div>
+        </div>
+
+    </div>
 
 </body>
 </html>
