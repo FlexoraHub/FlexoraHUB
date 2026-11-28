@@ -175,16 +175,18 @@
 
     .services {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 15px;
     }
 
     .service {
-      min-height: 132px;
+      min-height: 100%;
       padding: 22px 18px;
       border: 1px solid var(--line);
+      border-top: 4px solid #1746a2;
       border-radius: 12px;
       background: #fff;
+      box-shadow: 0 7px 20px rgba(20, 30, 45, .045);
       transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
 
@@ -207,7 +209,34 @@
 
     .service h3 {
       margin: 0;
+      font-size: 18px;
+      color: #1746a2;
+    }
+
+    .service-list {
+      display: grid;
+      gap: 11px;
+      margin: 15px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .service-list li {
+      position: relative;
+      padding-left: 22px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .service-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #1746a2;
       font-size: 16px;
+      font-weight: 700;
     }
 
     .service p {
@@ -241,7 +270,7 @@
       }
       .services-section { padding: 8px 16px 36px; }
       .services { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-      .service { min-height: 125px; padding: 17px 14px; }
+      .service { min-height: auto; padding: 17px 14px; }
     }
 
     @media (max-width: 420px) {
@@ -345,44 +374,52 @@
     <section class="services-section" id="services">
       <div class="section-heading">
         <h2>Our Services</h2>
-        <p>Simple ideas. Creative designs. Quality prints.</p>
+        <p>Complete creative and technical solutions under one roof</p>
       </div>
 
       <div class="services">
         <article class="service">
           <div class="service-icon" aria-hidden="true">🖨️</div>
-          <h3>Flex &amp; Banner Printing</h3>
-          <p>Printing solutions for promotions, shops and events.</p>
+          <h3>Print</h3>
+          <ul class="service-list">
+            <li>Document &amp; Bulk Printing</li>
+            <li>4x6 Photo Prints &amp; Lamination</li>
+            <li>Custom Gusseted Paper Covers</li>
+            <li>Brand &amp; Thank-You Stickers</li>
+          </ul>
         </article>
 
         <article class="service">
           <div class="service-icon" aria-hidden="true">🎨</div>
-          <h3>Graphic Designing</h3>
-          <p>Creative designs for your business and personal needs.</p>
+          <h3>Design</h3>
+          <ul class="service-list">
+            <li>Logos &amp; Branding Icons</li>
+            <li>Brochures, Flyers &amp; Posters</li>
+            <li>Promotional Intro Videos</li>
+            <li>Print-Ready Custom Layouts</li>
+          </ul>
         </article>
 
         <article class="service">
-          <div class="service-icon" aria-hidden="true">💳</div>
-          <h3>Visiting Cards</h3>
-          <p>Professional-looking cards to share your business details.</p>
+          <div class="service-icon" aria-hidden="true">💻</div>
+          <h3>Tech</h3>
+          <ul class="service-list">
+            <li>Custom Web Applications</li>
+            <li>Smart Attendance Systems</li>
+            <li>Google Apps Script Automation</li>
+            <li>Dashboard &amp; Sheet Integrations</li>
+          </ul>
         </article>
 
         <article class="service">
-          <div class="service-icon" aria-hidden="true">📣</div>
-          <h3>Advertisement Design</h3>
-          <p>Eye-catching promotional designs for your brand.</p>
-        </article>
-
-        <article class="service">
-          <div class="service-icon" aria-hidden="true">🪧</div>
-          <h3>Signage &amp; Display</h3>
-          <p>Display designs to help your business stand out.</p>
-        </article>
-
-        <article class="service">
-          <div class="service-icon" aria-hidden="true">🧩</div>
-          <h3>Custom Design Works</h3>
-          <p>Designs made to suit your requirements.</p>
+          <div class="service-icon" aria-hidden="true">⚙️</div>
+          <h3>Solutions</h3>
+          <ul class="service-list">
+            <li>Digital Billing &amp; Invoicing</li>
+            <li>Automated Push Notifications</li>
+            <li>Academic &amp; Event Tech Support</li>
+            <li>Custom Workflow Setup</li>
+          </ul>
         </article>
       </div>
     </section>
