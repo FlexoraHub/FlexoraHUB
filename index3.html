@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>RRS FlexoraHUB</title>
+  <style>
+    :root {
+      --ink: #20242b;
+      --muted: #68717d;
+      --line: #e6e9ee;
+      --soft: #f7f8fa;
+      --accent: #2563eb;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      padding: 28px 16px;
+      background: #f4f5f7;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .site-shell {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #dfe3e9;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(25, 35, 50, .045);
+    }
+    .banner-wrap {
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .banner {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 9px;
+      background: #fafafa;
+    }
+    .intro {
+      text-align: center;
+      padding: 54px 22px 42px;
+    }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #596271;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 46px);
+      letter-spacing: -1.5px;
+      line-height: 1.12;
+    }
+    .brand-logo {
+      display: block;
+      width: min(760px, 100%);
+      height: auto;
+      margin: 0 auto;
+    }
+    .intro p {
+      max-width: 620px;
+      margin: 15px auto 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    .section {
+      padding: 12px 34px 54px;
+    }
+    .section-heading {
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .section-heading h2 {
+      margin: 0;
+      font-size: 25px;
+      letter-spacing: -.5px;
+    }
+    .section-heading p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      padding: 0 34px 48px;
+    }
+    .action-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 58px;
+      padding: 12px 13px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: #fff;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.35;
+      text-align: center;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .action-button:hover {
+      transform: translateY(-3px);
+      border-color: #cbd5e1;
+      box-shadow: 0 8px 20px rgba(20, 30, 45, .07);
+    }
+    .button-icon { font-size: 17px; }
+    .button-arrow { color: #8a929d; font-size: 14px; }
+    .whatsapp-button { border-color: #d8eadf; }
+    .whatsapp-button:hover { border-color: #9ac9aa; }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+    .service {
+      min-height: 132px;
+      padding: 22px 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .service:hover {
+      transform: translateY(-4px);
+      border-color: #cbd5e1;
+      box-shadow: 0 10px 24px rgba(20, 30, 45, .07);
+    }
+    .service-icon {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 14px;
+      border-radius: 10px;
+      background: var(--soft);
+      font-size: 19px;
+    }
+    .service h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+    .service p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    footer {
+      padding: 20px;
+      border-top: 1px solid var(--line);
+      color: #7b8490;
+      text-align: center;
+      font-size: 12px;
+    }
+    @media (max-width: 980px) {
+      .quick-links { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 720px) {
+      .quick-links { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0 16px 36px; }
+      body { padding: 10px; }
+      .site-shell { border-radius: 12px; }
+      .banner-wrap { padding: 8px; }
+      .intro { padding: 40px 18px 32px; }
+      .intro p { font-size: 14px; }
+      .section { padding: 8px 16px 36px; }
+      .services { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .service { min-height: 125px; padding: 17px 14px; }
+    }
+    @media (max-width: 420px) {
+      .quick-links { grid-template-columns: 1fr; }
+      .services { grid-template-columns: 1fr; }
+      .service { min-height: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="site-shell">
+    <header class="banner-wrap">
+      <!-- Keep Banner.png in the same GitHub repository folder as this index.html file. -->
+      <img class="banner" src="Banner.png" alt="RRS FlexoraHUB banner"
+           onerror="this.style.display='none'; document.getElementById('banner-fallback').style.display='block';">
+      <div id="banner-fallback" style="display:none;padding:34px 12px;text-align:center;border:1px dashed #d7dce3;border-radius:9px;color:#68717d;">
+        Add your banner image as <strong>Banner.png</strong> in this same folder.
+      </div>
+    </header>
+
+    <section class="intro">
+      <span class="eyebrow">WELCOME</span>
+      <img class="brand-logo" src="RRS-FlexoraHub-Logo.png" alt="RRS FlexoraHub logo">
+      <p>Creative designs and quality printing solutions for your business, events and everyday needs.</p>
+    </section>
+
+
+    <section class="quick-links" aria-label="Explore RRS FlexoraHUB">
+      <a class="action-button" href="#" aria-label="View our catalogues">
+        <span class="button-icon">📚</span>
+        <span>View Our Catalogues</span>
+        <span class="button-arrow">↗</span>
+      </a>
+      <a class="action-button" href="#" aria-label="View our products">
+        <span class="button-icon">🛍️</span>
+        <span>View Our Products</span>
+        <span class="button-arrow">↗</span>
+      </a>
+      <a class="action-button" href="#" aria-label="View our projects">
+        <span class="button-icon">🗂️</span>
+        <span>View Our Projects</span>
+        <span class="button-arrow">↗</span>
+      </a>
+      <a class="action-button" href="#" aria-label="Follow us on Instagram">
+        <span class="button-icon">📷</span>
+        <span>Follow Us on Instagram</span>
+        <span class="button-arrow">↗</span>
+      </a>
+      <a class="action-button whatsapp-button" href="#" aria-label="Chat with us on WhatsApp">
+        <span class="button-icon">💬</span>
+        <span>Chat with WhatsApp</span>
+        <span class="button-arrow">↗</span>
+      </a>
+    </section>
+
+    <section class="section" id="services">
+      <div class="section-heading">
+        <h2>Our Services</h2>
+        <p>Simple ideas. Creative designs. Quality prints.</p>
+      </div>
+
+      <div class="services">
+        <article class="service">
+          <div class="service-icon">🖨️</div>
+          <h3>Flex & Banner Printing</h3>
+          <p>Printing solutions for promotions, shops and events.</p>
+        </article>
+        <article class="service">
+          <div class="service-icon">🎨</div>
+          <h3>Graphic Designing</h3>
+          <p>Creative designs for your business and personal needs.</p>
+        </article>
+        <article class="service">
+          <div class="service-icon">💳</div>
+          <h3>Visiting Cards</h3>
+          <p>Professional-looking cards to share your business details.</p>
+        </article>
+        <article class="service">
+          <div class="service-icon">📣</div>
+          <h3>Advertisement Design</h3>
+          <p>Eye-catching promotional designs for your brand.</p>
+        </article>
+        <article class="service">
+          <div class="service-icon">🪧</div>
+          <h3>Signage & Display</h3>
+          <p>Display designs to help your business stand out.</p>
+        </article>
+        <article class="service">
+          <div class="service-icon">🧩</div>
+          <h3>Custom Design Works</h3>
+          <p>Designs made to suit your requirements.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>© <span id="year"></span> RRS FlexoraHUB. All rights reserved.</footer>
+  </main>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
